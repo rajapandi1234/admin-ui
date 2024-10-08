@@ -42,7 +42,7 @@ public class TestRunner {
 		TestNG runner = new TestNG();
 		if(!ConfigManager.gettestcases().equals("")) {
 			XmlSuite suite = new XmlSuite();
-			suite.setName("MySuite");
+			suite.setName("ADMIN-UI-AUTOMATION");
 			suite.addListener("io.mosip.testrig.adminui.utility.EmailableReport");
 			XmlClass blocklistedwordsCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BlockListTest");
 			XmlClass bulkUploadCRUD = new XmlClass("io.mosip.testrig.adminui.testcase.BulkUploadTest");
