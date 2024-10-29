@@ -114,7 +114,7 @@ public class EmailableReport implements IReporter {
 					boolean isStoreSuccess = false;
 					boolean isStoreSuccess2 = false;
 					try {
-						isStoreSuccess = s3Adapter.putObject(ConfigManager.getS3Account(), BaseTestCaseFunc.testLevel, null,
+						isStoreSuccess = s3Adapter.putObject(ConfigManager.getS3Account(), "Adminui", null,
 								null, newString, newReportFile);
 						logger.info("isStoreSuccess:: " + isStoreSuccess);
 
