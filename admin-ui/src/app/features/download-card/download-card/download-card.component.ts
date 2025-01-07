@@ -81,7 +81,8 @@ export class DownloadCardComponent implements OnInit {
   }
 
   renderImage(){
-    this.applicantPhoto = this.sanitizer.bypassSecurityTrustUrl(this.data.applicantPhoto);
+    const trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.applicantPhoto);
+    this.applicantPhoto = trustedUrl;
   }  
 
   search() {    
