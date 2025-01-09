@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer, SecurityContext } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfigService } from 'src/app/app-config.service';
 import { AuditService } from 'src/app/core/services/audit.service';
 import { DataStorageService } from 'src/app/core/services/data-storage.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
-import { DomSanitizer } from '@angular/platform-browser';
 import { saveAs } from 'file-saver';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -38,7 +37,7 @@ export class DownloadCardComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private dataStorageService: DataStorageService,
     public dialog: MatDialog,
-    private sanitizer:DomSanitizer,
+    private sanitizer: Sanitizer,
     private router: Router
   ) {
     translate.use(appService.getConfig().primaryLangCode);
@@ -81,8 +80,7 @@ export class DownloadCardComponent implements OnInit {
   }
 
   renderImage(){
-    const trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.data.applicantPhoto);
-    this.applicantPhoto = trustedUrl;
+    this.applicantPhoto = this.sanitizer.sanitize(SecurityContext.URL, this.data.applicantPhoto);
   }  
 
   search() {    
