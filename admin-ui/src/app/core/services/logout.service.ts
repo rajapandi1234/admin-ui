@@ -23,6 +23,6 @@ export class LogoutService {
 
   logout() {
     //TODO: NEED TO CHECK THE IMPLEMENTATION LATER
-    window.location.href = `${this.appService.getConfig().baseUrl}${this.appService.getConfig().logout}?redirecturi=`+encodeURIComponent(window.location.href);
+    window.location.href = `${this.appService.getConfig().baseUrl}${this.appService.getConfig().logout}?redirecturi=${btoa(window.location.href)}`;
   }
 }
