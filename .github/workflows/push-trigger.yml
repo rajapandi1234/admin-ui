@@ -119,7 +119,7 @@ jobs:
           ## FIND JARS & COPY ONLY EXECUTABLE JARs STORED UNDER TARGET DIRECTORY 
           find ${{ env.SERVICE_LOCATION }} -path '*/target/*' -name '*.jar'  -type f -exec zip ${{ env.BUILD_ARTIFACT }}.zip {} +
 
-      - name:  the springboot jars
+      - name: upload the springboot jars
         if: ${{ !contains(github.ref, 'master') || !contains(github.ref, 'main') }}
         uses: actions/upload-artifact@v4
         with:
